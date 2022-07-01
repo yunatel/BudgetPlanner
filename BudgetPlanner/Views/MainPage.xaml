@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="BudgetPlanner.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BudgetPlanner"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <NavigationView x:Name="navigationView" IsBackButtonVisible="Collapsed" IsSettingsVisible="False"
+                        Loaded="NavigationView_Loaded" SelectionChanged="NavigationView_SelectionChanged">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Icon="Calculator" Content="Счёт" Tag="Balance"/>
+                <NavigationViewItem Icon="Add" Content="Новая операция" Tag="NewOperation"/>
+                <NavigationViewItem Icon="List" Content="История" Tag="History"/>
+            </NavigationView.MenuItems>
+
+            <ScrollViewer>
+                <Frame x:Name="ContentFrame"/>
+            </ScrollViewer>
+        </NavigationView>
+
+    </Grid>
+</Page>
