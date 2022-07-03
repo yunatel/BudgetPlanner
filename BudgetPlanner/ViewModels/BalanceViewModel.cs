@@ -7,7 +7,7 @@ using BudgetPlanner.Services;
 
 namespace BudgetPlanner.ViewModels
 {
-    public class BalanceViewModel
+    public class BalanceViewModel : ViewModelBase
     {
         public static float getBalance()
         {

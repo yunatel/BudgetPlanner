@@ -4,42 +4,50 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:BudgetPlanner.ViewModels"
     mc:Ignorable="d" Background="{ThemeResource AppBarBackgroundThemeBrush}">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Margin="15,15,15,15" Text="Сумма операции:" VerticalAlignment="Top"/>
-            <TextBox Grid.Column="0" Margin="15,38,15,15" VerticalAlignment="Bottom"/>
-            <TextBlock Grid.Column="1" Margin="15,15,15,15" VerticalAlignment="Top" Text="Тип операции"/>
-            <ComboBox Grid.Column="1" Margin="15,38,15,15" VerticalAlignment="Bottom">
-                <ComboBoxItem Content="Доход"/>
-                <ComboBoxItem Content="Расход"/>
+    <Page.DataContext>
+        <local:NewOperationViewModel/>
+    </Page.DataContext>
+    
+    <ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Margin="15,15,15,15" Text="Сумма операции:" VerticalAlignment="Top"/>
+                <TextBox Text="{Binding OpSum, Mode=TwoWay}" Grid.Column="0" Margin="15,38,15,15" VerticalAlignment="Bottom"/>
+                <TextBlock Grid.Column="1" Margin="15,15,15,15" VerticalAlignment="Top" Text="Тип операции"/>
+                <ComboBox SelectedItem="{Binding OpType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="15,38,15,15" VerticalAlignment="Bottom" >
+                    <ComboBoxItem Content="Доход"/>
+                    <ComboBoxItem Content="Расход"/>
+                </ComboBox>
+            </Grid>
+            <TextBlock Grid.Row="1" Margin="15,15,15,15" Text="Категория операции:" VerticalAlignment="Top"/>
+            <ComboBox SelectedItem="{Binding OpCategory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Margin="15,38,15,15" VerticalAlignment="Bottom">
+                <ComboBoxItem Content="Заработная плата"/>
+                <ComboBoxItem Content="Транспорт"/>
+                <ComboBoxItem Content="Диведенды"/>
+                <ComboBoxItem Content="Развлечения"/>
+                <ComboBoxItem Content="Еда"/>
+                <ComboBoxItem Content="Возврат долга"/>
+                <ComboBoxItem Content="Возрат средств"/>
+                <ComboBoxItem Content="..."/>
             </ComboBox>
+            <TextBlock Grid.Row="2" Margin="15,15,15,15" Text="Комментарий:" VerticalAlignment="Top"/>
+            <TextBox Text="{Binding OpComment, Mode=TwoWay}" Grid.Row="2" Margin="15,38,15,15" VerticalAlignment="Bottom"/>
+            <Button Command="{Binding ClearButtonClicked}" Grid.Row="3" Margin="15,38,15,15" Height="38" Width="128" HorizontalAlignment="Left" Content="Сбросить"/>
+            <Button Command="{Binding AddButtonClicked}" IsEnabled="{Binding AddButtonEnabled}" Grid.Row="3" Margin="15,38,15,15" Height="38" Width="128" HorizontalAlignment="Right" Content="Записать" Background="#330800FF"/>
+            <TextBlock Text="{Binding OpType, Mode=TwoWay}" Grid.Row="3" Margin="15,15,15,15" HorizontalAlignment="Center"/>
         </Grid>
-        <TextBlock Grid.Row="1" Margin="15,15,15,15" Text="Категория операции:" VerticalAlignment="Top"/>
-        <ComboBox Grid.Row="1" Margin="15,38,15,15" VerticalAlignment="Bottom">
-            <ComboBoxItem Content="Заработная плата"/>
-            <ComboBoxItem Content="Транспорт"/>
-            <ComboBoxItem Content="Диведенды"/>
-            <ComboBoxItem Content="Развлечения"/>
-            <ComboBoxItem Content="Еда"/>
-            <ComboBoxItem Content="Возврат долга"/>
-            <ComboBoxItem Content="Возрат средств"/>
-            <ComboBoxItem Content="..."/>
-        </ComboBox>
-        <TextBlock Grid.Row="2" Margin="15,15,15,15" Text="Комментарий:" VerticalAlignment="Top"/>
-        <TextBox Grid.Row="2" Margin="15,38,15,15" VerticalAlignment="Bottom"/>
-        <Button Grid.Row="3" Margin="15,38,15,15" Height="38" Width="128" HorizontalAlignment="Left" Content="Сбросить"/>
-        <Button Grid.Row="3" Margin="15,38,15,15" Height="38" Width="128" HorizontalAlignment="Right" Content="Записать" Background="#330800FF"/>
-    </Grid>
+    </ScrollViewer>
 </Page>

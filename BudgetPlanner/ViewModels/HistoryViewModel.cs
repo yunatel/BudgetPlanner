@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BudgetPlanner.ViewModels
 {
-    internal class HistoryViewModel
+    internal class HistoryViewModel : ViewModelBase
     {
     }
 }
