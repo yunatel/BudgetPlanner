@@ -10,30 +10,24 @@
     <Page.DataContext>
         <local:NewOperationViewModel/>
     </Page.DataContext>
-    
+
     <ScrollViewer>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Margin="15,15,15,15" Text="Сумма операции:" VerticalAlignment="Top"/>
-                <TextBox Text="{Binding OpSum, Mode=TwoWay}" Grid.Column="0" Margin="15,38,15,15" VerticalAlignment="Bottom"/>
-                <TextBlock Grid.Column="1" Margin="15,15,15,15" VerticalAlignment="Top" Text="Тип операции"/>
-                <ComboBox SelectedItem="{Binding OpType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="15,38,15,15" VerticalAlignment="Bottom" >
-                    <ComboBoxItem Content="Доход"/>
-                    <ComboBoxItem Content="Расход"/>
-                </ComboBox>
-            </Grid>
-            <TextBlock Grid.Row="1" Margin="15,15,15,15" Text="Категория операции:" VerticalAlignment="Top"/>
-            <ComboBox SelectedItem="{Binding OpCategory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Margin="15,38,15,15" VerticalAlignment="Bottom">
+        <StackPanel Orientation="Vertical" Margin="10,0,0,10">
+            <StackPanel Orientation="Horizontal" >
+                <StackPanel>
+                    <TextBlock Text="Сумма операции:"/>
+                    <TextBox Text="{Binding OpSum, Mode=TwoWay}" MinWidth="300" Margin="0,0,10,10"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Тип операции"/>
+                    <ComboBox SelectedItem="{Binding OpType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="100" Margin="0,0,10,10">
+                        <ComboBoxItem Content="Доход"/>
+                        <ComboBoxItem Content="Расход"/>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+            <TextBlock Text="Категория операции:"/>
+            <ComboBox SelectedItem="{Binding OpCategory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,10,10" MinWidth="300">
                 <ComboBoxItem Content="Заработная плата"/>
                 <ComboBoxItem Content="Транспорт"/>
                 <ComboBoxItem Content="Диведенды"/>
@@ -43,11 +37,13 @@
                 <ComboBoxItem Content="Возрат средств"/>
                 <ComboBoxItem Content="..."/>
             </ComboBox>
-            <TextBlock Grid.Row="2" Margin="15,15,15,15" Text="Комментарий:" VerticalAlignment="Top"/>
-            <TextBox Text="{Binding OpComment, Mode=TwoWay}" Grid.Row="2" Margin="15,38,15,15" VerticalAlignment="Bottom"/>
-            <Button Command="{Binding ClearButtonClicked}" Grid.Row="3" Margin="15,38,15,15" Height="38" Width="128" HorizontalAlignment="Left" Content="Сбросить"/>
-            <Button Command="{Binding AddButtonClicked}" IsEnabled="{Binding AddButtonEnabled}" Grid.Row="3" Margin="15,38,15,15" Height="38" Width="128" HorizontalAlignment="Right" Content="Записать" Background="#330800FF"/>
-            <TextBlock Text="{Binding OpType, Mode=TwoWay}" Grid.Row="3" Margin="15,15,15,15" HorizontalAlignment="Center"/>
-        </Grid>
+            <TextBlock Text="Комментарий:"/>
+            <TextBox Text="{Binding OpComment, Mode=TwoWay}" Margin="0,0,10,10" MinWidth="300"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Command="{Binding ClearButtonClicked}" Height="38" Width="128" Content="Сбросить" HorizontalAlignment="Left" Margin="0,0,10,10"/>
+                <Button Command="{Binding AddButtonClicked}" IsEnabled="{Binding AddButtonEnabled}"  Height="38" Width="128" Content="Записать" Background="#330800FF" HorizontalAlignment="Right" Margin="0,0,10,10"/>
+            </StackPanel>
+            <TextBlock Text="{Binding OpType, Mode=TwoWay}"/>
+        </StackPanel>
     </ScrollViewer>
 </Page>
