@@ -19,22 +19,22 @@ namespace BudgetPlanner.ViewModels
 
         public string OpSum {
             get { return opSum; }
-            set { if (opSum != value) { opSum = value; OnPropertyChanged(nameof(OpSum)); } }
+            set { if (opSum != value) { opSum = value; TryToEnableAddButton(); OnPropertyChanged(nameof(OpSum)); } }
         }
         public ComboBoxItem OpType
         {
             get { return opType; }
-            set { if (opType != value) { opType = value; OnPropertyChanged(nameof(OpType)); } }
+            set { if (opType != value) { opType = value; TryToEnableAddButton(); OnPropertyChanged(nameof(OpType)); } }
         }
         public ComboBoxItem OpCategory
         {
             get { return opCategory; }
-            set { if (opCategory != value) { opCategory = value; OnPropertyChanged(nameof(OpCategory)); } }
+            set { if (opCategory != value) { opCategory = value; TryToEnableAddButton(); OnPropertyChanged(nameof(OpCategory)); } }
         }
         public string OpComment
         {
             get { return opComment; }
-            set { if (opComment != value) { opComment = value; OnPropertyChanged(nameof(OpComment)); } }
+            set { if (opComment != value) { opComment = value; TryToEnableAddButton(); OnPropertyChanged(nameof(OpComment)); } }
         }
         public bool AddButtonEnabled
         {
@@ -57,6 +57,18 @@ namespace BudgetPlanner.ViewModels
             get { return new DelegateCommand(Clear); }
         }
 
+        public void TryToEnableAddButton()
+        {
+            try
+            {
+                float.Parse(opSum);
+                if (opType != null && opCategory != null)
+                    AddButtonEnabled = true;
+                else AddButtonEnabled = false;
+            }
+            catch (FormatException) { AddButtonEnabled = false; }
+            catch (ArgumentNullException) { AddButtonEnabled = false; }
+        }
         public void Clear()
         {
             OpSum = String.Empty;
