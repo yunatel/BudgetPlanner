@@ -9,7 +9,14 @@ namespace BudgetPlanner.ViewModels
 {
     public class BalanceViewModel : ViewModelBase
     {
-        public static float getBalance()
+        private string balanceText = "Баланс: " + GetBalance().ToString();
+
+        public string BalanceText
+        {
+            get { return balanceText; }
+            set { if (balanceText != value) { balanceText = value; OnPropertyChanged(nameof(BalanceText)); } }
+        }
+        public static float GetBalance()
         {
             float balance = 0f;
             foreach (Models.SampleOperation record in DBService.GetRecords())

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BudgetPlanner.Services;
 
 namespace BudgetPlanner.ViewModels
 {
-    internal class HistoryViewModel : ViewModelBase
+    public class HistoryViewModel : ViewModelBase
     {
+
     }
 }

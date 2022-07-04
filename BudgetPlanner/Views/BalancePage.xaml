@@ -12,6 +12,6 @@
     </Page.DataContext>
 
     <Grid>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="50,41,0,0" TextWrapping="Wrap" Text="Баланс не обновлен" VerticalAlignment="Top" FontSize="24"/>
+        <TextBlock HorizontalAlignment="Left" Margin="50,41,0,0" TextWrapping="Wrap" Text="{Binding BalanceText}" VerticalAlignment="Top" FontSize="24"/>
     </Grid>
 </Page>

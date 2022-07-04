@@ -9,7 +9,6 @@ namespace BudgetPlanner.Views
         public BalancePage()
         {
             this.InitializeComponent();
-            textBlock.Text = "Баланс: " + BalanceViewModel.getBalance().ToString();
         }
     }
 }
