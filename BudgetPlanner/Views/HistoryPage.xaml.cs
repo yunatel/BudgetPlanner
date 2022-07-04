@@ -13,19 +13,15 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace BudgetPlanner.Views
 {
-    /// <summary>
-    /// Пустая страница, которую можно использовать саму по себе или для перехода внутри фрейма.
-    /// </summary>
+
     public sealed partial class HistoryPage : Page
     {
         public HistoryPage()
         {
             this.InitializeComponent();
-            DataGrid.ItemsSource = Services.DBService.GetRecords();
         }
     }
 }

@@ -14,7 +14,7 @@
     </Page.DataContext>
 
     <Grid>
-        <controls:DataGrid x:Name="DataGrid" AutoGenerateColumns="False">
+        <controls:DataGrid AutoGenerateColumns="False" ItemsSource="{Binding DataGridItemSource}">
             <controls:DataGrid.Columns>
                 <controls:DataGridTextColumn Header="Дата"          Binding="{Binding opDate}"/>
                 <controls:DataGridTextColumn Header="Сумма"         Binding="{Binding opSum}"/>
